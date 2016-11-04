@@ -12,6 +12,7 @@ var secondNumber = 0.0
 var function = "none"
 var decimal = false
 var aOrB = "a"
+var answer = 0.0
 
 func assignvalue1(number: Double) ->Double
 {
@@ -38,6 +39,7 @@ func assignvalue2(number: Double) ->Double
     }
     return secondNumber
 }
+
 
 
 class ViewController: UIViewController {
@@ -181,18 +183,53 @@ class ViewController: UIViewController {
     }
     
     @IBAction func plusButton(_ sender: AnyObject) {
-        
+        function = "plus"
+        aOrB = "b"
+        answerLabel.text = "+"
+        decimal = false
     }
     @IBAction func minusButton(_ sender: AnyObject) {
+        function = "minus"
+        aOrB = "b"
+        answerLabel.text = "-"
+        decimal = false
     }
     @IBAction func multiplyButton(_ sender: AnyObject) {
+        function = "multiply"
+        aOrB = "b"
+        answerLabel.text = "*"
+        decimal = false
     }
     @IBAction func divideButton(_ sender: AnyObject) {
+        function = "divide"
+        aOrB = "b"
+        answerLabel.text = "/"
+        decimal = false
     }
     
     @IBAction func calculateButton(_ sender: AnyObject) {
+        switch function
+        {
+        case "plus":
+            answer = firstNumber + secondNumber
+            answerLabel.text = String(answer)
+        case "minus":
+            answer = firstNumber - secondNumber
+            answerLabel.text = String(answer)
+        case "multiply":
+            answer = firstNumber * secondNumber
+            answerLabel.text = String(answer)
+        case "divide":
+            answer = firstNumber / secondNumber
+            answerLabel.text = String(answer)
+        default: break
+        }
+        aOrB = "a"
+        
     }
     @IBAction func decimalButton(_ sender: AnyObject) {
+        decimal = true
+        answerLabel.text = "."
     }
     override func viewDidLoad() {
         super.viewDidLoad()
